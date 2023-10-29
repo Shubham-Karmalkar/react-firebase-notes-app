@@ -1,0 +1,29 @@
+.topnav {
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand_logo {
+    height: auto;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    max-width: 200px;
+    width: 70%;
+    min-width: 100px;
+}
+
+.signBtn {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.signBtn:hover {
+    background-color: var(--secondary);
+}
+

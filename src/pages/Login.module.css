@@ -1,0 +1,70 @@
+.container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.body {
+    background-color: var(--primary);
+    max-width: 500px;
+    width: 80%;
+    min-width: 250px;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.page_head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.brand_logo {
+    height: auto;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    max-width: 150px;
+    width: 70%;
+    /* min-width: 100px; */
+}
+
+.page_title {
+    font-size: 30px;
+    color: black;
+    margin-top: 20px ;
+}
+
+.cred_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.input_fields {
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    width: inherit;
+    border: 1px solid #DCDDDF;
+    background-color: #f3f6fd;
+    max-width: 400px;
+}
+
+@media screen and (max-width: 500px) {
+    .page_title {
+        font-size: 25px;
+    }
+    .body {
+        width: 90%;
+    }
+}
