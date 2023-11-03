@@ -35,6 +35,7 @@
 }
 
 .log_in_btn {
+    text-align: center;
     border: 3px solid var(--secondary);
     padding-top: 12.4px;
     padding-bottom: 12.4px;

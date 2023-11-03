@@ -1,5 +1,5 @@
 import { auth, googleProvider } from "../config/firebase";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, onAuthStateChanged, User, Auth } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
 import styles from "./authorization.module.css"
 import { useEffect, useState } from "react";
@@ -95,6 +95,11 @@ export const SignUpWithCredentials = ({email, password, confPassword, callback}:
     )
 };
 
+export const logOut = async() => {
+  await signOut(auth);
+}
+
+
 function getErrorMessage(error:{code: string, message: string}) {
   switch (error.code) {
     case "auth/invalid-login-credentials":
@@ -110,3 +115,4 @@ function getErrorMessage(error:{code: string, message: string}) {
       return "Oops Something went Wrong";
   }
 }
+

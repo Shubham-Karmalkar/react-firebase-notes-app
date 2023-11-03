@@ -3,9 +3,7 @@ import brand_logo from '../resource/logo.png';
 import { useState } from "react";
 import { LogInWithGoogle, LogInWithCredentials } from "../components/authorization";
 import { UserCredential } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 
-const SUCCESS_REDIRECT = "/";
 
 const PageTitle = () => {
   return (
@@ -37,7 +35,6 @@ const LoginOptions = ({email, password, callback}: {email: string, password: str
 export const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword]  = useState("");
-    const navigate = useNavigate();
 
     function setData(type: "email" | "password", value: string) {
         if(type === "email"){
@@ -50,7 +47,6 @@ export const Login = () => {
       if(!obj.status){
         return alert(obj.message);
       }
-      navigate(SUCCESS_REDIRECT);
     }
 
     return (

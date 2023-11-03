@@ -3,15 +3,13 @@ import brand_logo from '../resource/logo.png';
 import { useState } from "react";
 import { SignUpWithCredentials, SignUpWithGoogle } from "../components/authorization";
 import { UserCredential } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 
-const SUCCESS_REDIRECT = "/";
 
 const PageTitle = () => {
   return (
     <div className={styles.page_head}>
       <img src={brand_logo} className={styles.brand_logo}/>
-      <div className={styles.page_title}>Log in</div>
+      <div className={styles.page_title}>Sign Up</div>
     </div>
   );
 };
@@ -39,7 +37,6 @@ export const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword]  = useState("");
     const [confPassword, setConfPassword]  = useState("");
-    const navigate = useNavigate();
 
     function setData(type: "email" | "password" | "confirm", value: string) {
         if(type === "email"){
@@ -55,7 +52,6 @@ export const SignUp = () => {
         if(!obj.status){
         return alert(obj.message);
       }
-      navigate(SUCCESS_REDIRECT);
     }
 
     return (

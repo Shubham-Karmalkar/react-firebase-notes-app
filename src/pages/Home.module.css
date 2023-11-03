@@ -1,0 +1,32 @@
+.input_container{
+    position: relative;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+
+}
+
+.input_container span{
+    position: absolute;
+    top: -17px;
+    z-index: 10;
+    left: 5px;
+    background-color: aquamarine;
+    color: black;
+    border-radius: 20px;
+    /* padding: 2px; */
+    /* padding:  0px; */
+}
+
+.input_container input,span {
+    padding: 10px;
+    font-size: 14px;
+}
+
+
+.input_container input:hover{
+    span {
+        
+    }
+}
+
