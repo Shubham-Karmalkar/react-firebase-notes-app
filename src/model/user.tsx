@@ -1,7 +1,7 @@
 import {User as AuthUser} from 'firebase/auth';
 import { db, doc, getDoc, setDoc } from '../config/firebase';
 
-type DbUser = {
+export type DbUser = {
   email: string,
   name: string, 
   uid: string,
@@ -13,13 +13,17 @@ type DbUser = {
 
 }
 export class User {
-  uid : string = "";
-  providerId : string = "";
-  phoneNumber : string = "";
+  uid: string = "";
+  providerId: string = "";
+  phoneNumber: string = "";
   createdAt: number = 0;
   updatedAt: number = 0;
 
-  constructor(public email: string, public name: string, public imageUrl: string) {
+  constructor(
+    public email: string,
+    public name: string,
+    public imageUrl: string
+  ) {
     this.email = email;
     this.name = name;
     this.imageUrl = imageUrl;
@@ -40,18 +44,35 @@ export class User {
     return this;
   }
 
-  setTimeStamp(createdAt:number, updatedAt: number){
+  setTimeStamp(createdAt: number, updatedAt: number) {
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
     return this;
   }
 
   asObj(): DbUser {
-    const {email, name, uid, providerId, imageUrl, phoneNumber, createdAt, updatedAt } = this;
-    return {email, name, uid, providerId, imageUrl, phoneNumber, createdAt, updatedAt };
+    const {
+      email,
+      name,
+      uid,
+      providerId,
+      imageUrl,
+      phoneNumber,
+      createdAt,
+      updatedAt,
+    } = this;
+    return {
+      email,
+      name,
+      uid,
+      providerId,
+      imageUrl,
+      phoneNumber,
+      createdAt,
+      updatedAt,
+    };
   }
 
-  
   private static getDocRef(id: string) {
     return doc(db, "users", id);
   }
@@ -66,6 +87,7 @@ export class User {
 
     userObj.updatedAt = new Date().getTime();
     this.updatedAt = userObj.updatedAt;
+
     if (!userObj.createdAt) {
       userObj.createdAt = userObj.updatedAt;
       this.createdAt = userObj.updatedAt;
@@ -74,13 +96,48 @@ export class User {
 
     return this;
   }
-  
+
+  static getInstanceByObj(userObj: DbUser): User {
+    let fallbackDate = new Date().getTime();
+    const {
+      email,
+      name,
+      uid,
+      providerId,
+      imageUrl,
+      phoneNumber,
+      createdAt,
+      updatedAt,
+    } = userObj;
+    if (!email || !name || !uid) {
+      throw "Incomplete User Data";
+    }
+    return new User(email, name, imageUrl || "")
+      .setUid(uid)
+      .setPhone(providerId)
+      .setPhone(phoneNumber || "")
+      .setTimeStamp(createdAt || fallbackDate, updatedAt || fallbackDate);
+  }
+
+  static getInstanceByAuth(authUser: AuthUser): User {
+    const { displayName, email, photoURL, uid, providerData, phoneNumber } =
+      authUser;
+    let obj = {
+      name: displayName,
+      imageUrl: photoURL,
+      email,
+      uid,
+      providerData,
+      phoneNumber,
+    };
+    return this.getInstanceByObj(obj as any as DbUser);
+  }
+
   static async getUserById(emailId: string) {
     let docRef = this.getDocRef(emailId);
     const docSnap = await getDoc(docRef);
-    if(!docSnap.exists()) return null ;
-    const {email, name, uid, providerId, imageUrl, phoneNumber, createdAt, updatedAt} = docSnap.data() as User;
-    return new User(email, name, imageUrl).setUid(uid).setPhone(providerId).setPhone(phoneNumber).setTimeStamp(createdAt, updatedAt);
+    if (!docSnap.exists()) return null;
+    return this.getInstanceByObj(docSnap.data() as User);
   }
 }
 
