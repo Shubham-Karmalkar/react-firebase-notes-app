@@ -10,7 +10,6 @@ export type DbUser = {
   providerId: string,
   imageUrl?: string,
   phoneNumber?:string,
-
 }
 export class User {
   uid: string = "";

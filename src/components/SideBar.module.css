@@ -1,0 +1,37 @@
+.sidebar_container {
+    background-color: var(--primary);
+    padding: 20px;
+    max-width: 260px;
+    max-height: 100%;
+    border-radius: 15px;
+}
+
+.sidebar_container>ul>li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.links {
+    max-width: 220px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+}
+
+.links>svg {
+    font-size: 25px;
+    margin-right: 10px;
+    transition: all 1s ease-in-out;
+}
+
+.links:hover>svg {
+    transform: rotateZ(180deg);
+}
+
+.links:hover {
+    color: black;
+}

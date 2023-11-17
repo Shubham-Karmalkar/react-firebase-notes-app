@@ -26,7 +26,6 @@ export const LogInWithGoogle = ({callback}:{callback:any}) => {
     const onClickLogIn = async () => {
         try {
             const logRes = await signInWithPopup(auth, googleProvider);
-            console.log(logRes)
             callback({status: true, repsonse: logRes});
         } catch(e: any) {
             let message = getErrorMessage(e);
@@ -111,7 +110,7 @@ function getErrorMessage(error:{code: string, message: string}) {
     case "auth/email-already-in-use":
         return "Email is already registered with another user"
     default:
-      console.log("Error: ", error.code, error.message);
+      console.error("Error: ", error.code, error.message);
       return "Oops Something went Wrong";
   }
 }

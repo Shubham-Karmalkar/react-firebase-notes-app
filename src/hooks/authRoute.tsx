@@ -5,7 +5,6 @@ import { useContext } from "react";
 const CustomRedirector = ({Element, isAuth, nonAuthPath, authRedirect}:{Element: any, isAuth?: boolean, nonAuthPath?: string, authRedirect?:string }) => {
   const user = useContext(UserContext);
   if (!isAuth) return Element;
-  console.log("customerRedirector: ", user, isAuth, nonAuthPath, authRedirect);
   if (!user && nonAuthPath) return <Navigate to={nonAuthPath} />;
   if(!user) return Element;
   if (authRedirect) return <Navigate to={authRedirect} />;
@@ -13,14 +12,14 @@ const CustomRedirector = ({Element, isAuth, nonAuthPath, authRedirect}:{Element:
 }
 
 export const CustomRoutes = ({ children }: { children: any }) => {
-  console.log(children);
 
   return (
     <Routes>
-      {children.map((child: any) => {
+      {children.map((child: any, index: number) => {
         return (
           <Route
             path={child.props.path}
+            key={index}
             element={
               <CustomRedirector
                 Element={child.props.element}

@@ -1,0 +1,35 @@
+.useNotificationContainer {
+    display: flex;
+    align-items: center;
+    max-width: 136px;
+    width: 100%;
+    max-width: 200px;
+    height: 100%;
+    background-color: white;
+    justify-content: space-evenly;
+    border-radius: 15px;
+}
+
+.icons > a > svg{
+    font-size: 40px;
+    padding: 10px;
+    background-color: var(--secondary);
+    border-radius: 5px;
+}
+
+.icons > a {
+    position: relative;
+    display: block;
+    height: 100%;
+}
+
+.icons > a > span {
+    position: absolute;
+    padding: 3px 6px;
+    font-size: 13px;
+    right: -10px;
+    top:-10px;
+    border-radius: 60%;
+    color: white;
+    background-color: black;
+}

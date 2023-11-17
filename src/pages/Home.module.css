@@ -1,32 +1,29 @@
-.input_container{
-    position: relative;
-    margin: 10px;
+.home{
+    width: 100%;
+    height: 100%;
     display: flex;
-    align-items: center;
-
+    margin-top: 30px;
 }
-
-.input_container span{
-    position: absolute;
-    top: -17px;
-    z-index: 10;
-    left: 5px;
-    background-color: aquamarine;
-    color: black;
-    border-radius: 20px;
-    /* padding: 2px; */
-    /* padding:  0px; */
+.home > div:first-child {
+    margin-left: 20px;
+    position: fixed;
+    height: 100vh;
 }
-
-.input_container input,span {
-    padding: 10px;
-    font-size: 14px;
+.main_content {
+    width: 100%;
+    margin-left: 300px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 
-.input_container input:hover{
-    span {
-        
+@media screen and ( width < 1300px) {
+    .home > div:first-child {
+        display: none;
+    }
+    .main_content {
+        margin: 0 20px;
     }
 }
-

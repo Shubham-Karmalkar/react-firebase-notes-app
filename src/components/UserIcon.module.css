@@ -1,0 +1,37 @@
+.user_icon {
+    display: flex;
+    align-items: center;
+    min-width: 220px;
+    justify-content: center;
+}
+.image {
+    border-radius: 50%;
+    max-width: 50px;
+    min-width: 40px;
+}
+
+.image+div {
+    padding: 5px;
+}
+
+.links,.logout {
+    padding: 10px 0px;
+}
+.links > a > svg, .logout > span >svg {
+    font-size: 20px;
+    margin: 0px 10px;
+}
+
+.links > a {
+    padding-left: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.logout > span {
+    display: flex;
+    padding-left: 30px;
+    justify-content: flex-start;
+    align-items: center;
+}

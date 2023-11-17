@@ -48,7 +48,6 @@ export const SignUp = () => {
     }
 
     const loginStatusChange = async (obj: {status:boolean, response?:UserCredential, message?:string}) => {
-      console.log("result: ", obj)
         if(!obj.status){
         return alert(obj.message);
       }

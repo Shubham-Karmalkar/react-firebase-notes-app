@@ -1,0 +1,49 @@
+.user_icon [type="checkbox"] {
+    position: absolute;
+    left: -9999px;
+}
+.user_icon {
+    max-width: 220px;
+    border-radius: 3px;
+    color: var(--text-bold);
+    background-color: transparent;
+}
+.user_name_pic {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.user_icon input:checked+label,
+.user_icon input:not(:checked)+label {
+    cursor: pointer;
+}
+.dropdown{
+    background-color: var(--primary);
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+    pointer-events: none;
+    transition: all 200ms ease-in-out;
+    opacity: 0;
+    transform: translateY(-10px);
+    top: calc(50px);
+    z-index: 1;
+}
+
+.dropdown > * {
+    display: block;
+}
+
+.dropdown > span:hover, .dropdown > a:hover {
+    background-color: var(--secondary);
+}
+
+.user_icon input:checked+label .dropdown{
+    opacity: 1;
+    transform: translateY(0px);
+    pointer-events: auto;
+}

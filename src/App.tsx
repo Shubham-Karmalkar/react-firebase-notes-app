@@ -7,12 +7,9 @@ import { Home } from "./pages/Home";
 import { useAuthUser, UserContext } from "./hooks/useAuth";
 import { CustomRoutes, AuthRoute } from "./hooks/authRoute";
 
-// https://templates.iqonic.design/note-plus/html/backend/auth-sign-up.html
-// https://templates.iqonic.design/note-plus/html/backend/index.html
 
 function App() {
   const [user] = useAuthUser(auth);
-  console.log(user);
   return (
     <div className="App">
       <UserContext.Provider value={user}>

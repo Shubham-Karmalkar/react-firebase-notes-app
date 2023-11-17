@@ -5,12 +5,8 @@ import { createUserWithEmailAndPassword, signInWithPopup, signOut, signInWithEma
 export const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(auth.currentUser?.email)
   const signIn = async() => {
     const sign = await signInWithEmailAndPassword(auth, email, password);
-    console.log(sign);
-    // const res = await createUserWithEmailAndPassword(auth, email, password);
-
   };
   const signInWithGoogle = async() => {
     const res = await signInWithPopup(auth, googleProvider)

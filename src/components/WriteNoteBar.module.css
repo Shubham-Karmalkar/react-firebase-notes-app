@@ -1,0 +1,66 @@
+.writeNoteBar{
+    padding: 30px;
+    background-color: var(--primary);
+    border-radius: 15px;
+    width: 100%;
+    max-width: 960px;
+    height: 100%;
+}
+
+.padding_update {
+    padding: 20px;
+}
+
+.noclick, .clicked, .clicked > div {
+    display: flex;
+    align-items: center;
+}
+
+.clicked {
+    height: 100%;
+    justify-content: space-between;
+}
+
+.clicked > div:first-child > svg {
+    margin-right: 10px;
+}
+
+.clicked > div:nth-child(2) > span {
+    padding: 10px;
+}
+
+.clicked > div:nth-child(2) > span, .icon {
+    background-color: var(--secondary);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.icon {
+    font-size: 40px;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.noclick > svg {
+    margin-right: 10px;
+}
+
+.dropdownMenu {
+    width: 200px;
+    right: 5px;
+}
+
+.moreLinks {
+    padding: 10px 0px;
+}
+
+.moreLinks > a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+.moreLinks > a > svg {
+    margin-right: 10px;
+}

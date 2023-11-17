@@ -1,0 +1,59 @@
+.noteCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 670px;
+    min-width: 270px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.125);
+    padding: 15px;
+    color: black;
+    transition: all 200ms ease-in-out;
+    flex-grow: 1;
+    flex-basis: 30%;
+}
+
+.quillContainer{
+    color: #768492;
+    height: 170px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.noteCard>div:first-child {
+    align-self: flex-end;
+}
+
+.quill_note {
+    box-shadow: none !important;
+    height: 170px;
+    overflow: hidden !important;
+}
+
+.dropDown {
+    width: 160px !important;
+    right: 0;
+    top: 20px !important;
+}
+
+.links {
+    display: flex !important;
+    justify-content: flex-start !important;
+    padding: 10px 0;
+    padding-left: 10px;
+}
+
+.links>svg {
+    margin: 0 20px;
+}
+
+.lowerCard {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lowerCard > div > svg {
+    margin-right: 10px;
+}

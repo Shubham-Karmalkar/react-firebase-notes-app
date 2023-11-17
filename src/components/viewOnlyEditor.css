@@ -1,0 +1,9 @@
+.viewOnlyContainer{
+    height: 100%;
+}
+
+.viewOnlyContainer .ql-editor {
+    height: 100% !important;
+    overflow: hidden ;
+}
+

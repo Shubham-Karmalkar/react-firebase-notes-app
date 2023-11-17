@@ -1,0 +1,60 @@
+.container {
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    display: flex;
+    flex-direction: column;
+}
+.container > div:first-child, .container .ql-editor {
+    min-height: 500px;
+}
+
+.ql-editor {
+    font-size: 16px
+}
+
+.ql-container {
+    font-family: inherit !important;
+}
+
+.ql-container.ql-snow {
+    border: none !important;
+}
+
+.ql-toolbar.ql-snow {
+    border: none !important;
+    border-bottom: 1px solid #ccc !important;
+}
+
+.btns {
+    align-self: flex-end;
+    display: flex;
+}
+
+.btns > div:first-child {
+    color: black;
+    border: 1px solid black;
+
+}
+
+.btns > div:nth-child(2) {
+    color: var(--primary);
+    background-color: black;
+}
+
+.btns > div {
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+
+
+.btns > div:first-child:hover {
+    color: white;
+    background-color: black;
+}
