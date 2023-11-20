@@ -4,13 +4,13 @@
     display: flex;
     margin-top: 30px;
 }
-.home > div:first-child {
+.sidebar {
     margin-left: 20px;
     position: fixed;
-    height: 100vh;
+    height: 100%;
 }
 .main_content {
-    width: 100%;
+    width: auto;
     margin-left: 300px;
     margin-right: 20px;
     display: flex;
@@ -18,12 +18,24 @@
     gap: 20px;
 }
 
+.nav{
+    display: none;
+}
+
 
 @media screen and ( width < 1300px) {
-    .home > div:first-child {
+    .sidebar {
         display: none;
     }
     .main_content {
         margin: 0 20px;
+    }
+    .home {
+        flex-direction:column;
+        margin-top: 0px;
+        gap: 20px;
+    }
+    .nav {
+        display: flex;
     }
 }
