@@ -5,7 +5,7 @@
     justify-content: center;
 }
 .image {
-    border-radius: 50%;
+    border-radius: 25%;
     max-width: 50px;
     min-width: 40px;
 }
@@ -34,4 +34,8 @@
     padding-left: 30px;
     justify-content: flex-start;
     align-items: center;
+}
+
+.alignLeft{
+    left: 0px;
 }

@@ -45,6 +45,7 @@ export const UserIcon = ({className}: {className?: string}) => {
     const user = useContext(UserContext);
     return (
         <GenericDropDown
+        dropDownMenuClass={style.alignLeft}
           dropDown={<UserProfile user={user} />}
           dropDownMenu={<UserDropDownMenu />}
           type="userIcon"
