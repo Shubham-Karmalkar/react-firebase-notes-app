@@ -131,14 +131,17 @@ export class SimpleNote extends Note {
     if (!this._all?.length) throw "No Card to Filter";
     switch (type) {
       case "shared":
+        if(this._sharedNotes && this._sharedNotes.length > 0) return this._sharedNotes;
         this._sharedNotes = this._all.filter(
           (note) => note.sharedUsers.length > 0
         );
         return this._sharedNotes;
       case "favourite":
+        if(this._favouriteNotes && this._favouriteNotes.length > 0) return this._favouriteNotes;
         this._favouriteNotes = this._all.filter((note) => note.isFavourite);
         return this._favouriteNotes;
       case "pinned":
+        if(this._pinNotes && this._pinNotes.length > 0) return this._pinNotes;
         this._pinNotes = this._all.filter((note) => note.isPinned);
         return this._pinNotes;
       case "all":
@@ -181,4 +184,5 @@ export class SimpleNote extends Note {
 
     return await this.getFavouriteNotes();
   }
+
 }
