@@ -3,6 +3,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 20px;
+    height: 70px;
 }
 
 .brand_logo {
@@ -27,3 +29,39 @@
     background-color: var(--secondary);
 }
 
+.leftSide {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.moreBtn {
+    font-size: 26px;
+}
+
+.sidebar{
+    left: -20px;
+    width: auto !important;
+    top: -22px !important;
+    transform: translateX(-220px) !important;
+    transition: all 300ms ease-in-out !important;
+}
+
+#sidebarDropdown:checked+label~.sidebar {
+    transform: translateX(0px) !important;
+}
+
+.notification {
+    display: none;
+}
+
+@media screen and (width < 990px) {
+    .notification {
+        display: flex;
+    }
+}
+@media screen and (width < 770px) {
+    .brand_logo {
+        display: none;
+    }
+}
