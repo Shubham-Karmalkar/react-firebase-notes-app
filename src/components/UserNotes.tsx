@@ -64,7 +64,10 @@ export const UserNotes = () => {
         });
     }, []);
 
-    const noteCards = !notes._all  ? (<div className={style.emptyNotes}><img src={noDataImg} alt='no data present'/></div>) : notes._all.map((note,index) => {
+
+    let filteredNotes = notes._all && notes._all.length > 0 &&  notes.filterNote(currentPage);
+
+    const noteCards = !(filteredNotes && filteredNotes.length)  ? (<div className={style.emptyNotes}><img src={noDataImg} alt='no data present'/></div>) : filteredNotes.map((note,index) => {
         const colorIndex = index ? index % ColorArr.length : index; 
         return <NoteCard note={note} color={ColorArr[colorIndex]}/>;
     })
