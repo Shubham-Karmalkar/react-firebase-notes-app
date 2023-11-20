@@ -12,8 +12,8 @@ export const GenericDropDown = ({dropDown, dropDownMenu,type, dropDownMenuClass}
     }
   };
 
-  const handleClick = () => {
-    setChecked((val) => !val);
+  const handleClick = (e: any) => {
+    setChecked(val => !val);
   };
 
   useEffect(() => {
@@ -25,11 +25,13 @@ export const GenericDropDown = ({dropDown, dropDownMenu,type, dropDownMenuClass}
   }, []);
   return (
       <div className={style.user_icon} ref={inputRef} >
-        <input checked={checked} onChange={handleClick} type="checkbox" name="userIcon" id={type} />
+        <input checked={checked} type="checkbox" name="userIcon" id={type} />
         <label className={style.user_name_pic} htmlFor={type}>
-          {dropDown}
-          <span className={`${style.dropdown} ${dropDownMenuClass}`}>{dropDownMenu}</span>
         </label>
+        <div onClick={handleClick}>
+          {dropDown}
+        </div>
+        <span className={`${style.dropdown} ${dropDownMenuClass}`}>{dropDownMenu}</span>
       </div>
     );
 }
