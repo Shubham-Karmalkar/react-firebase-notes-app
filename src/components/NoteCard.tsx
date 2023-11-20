@@ -26,7 +26,7 @@ const MoreOptions = () => {
 
 export const NoteCard = ({note, color="red"}:{note:SimpleNote, color?: string}) => {
     const colorRef = useRef<HTMLDivElement>(null);
-    const [currentColor, setCurrentColor] = useState("");
+    const [currentColor, setCurrentColor] = useState(color);
     
     const colorClass = {
         style: {
