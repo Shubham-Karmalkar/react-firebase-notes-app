@@ -27,3 +27,7 @@
     justify-content: flex-start;
     align-items: center;
 }
+
+.alignLeft{
+    left: 0px;
+}

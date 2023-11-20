@@ -36,6 +36,6 @@ const UserDropDownTitle = () => {
 
 export const AddNewNote = ({className}: {className?: string}) => {
     return (
-            <GenericDropDown dropDown={<UserDropDownTitle/>} dropDownMenu={<UserDropDownMenu/>} type="addNotes"/>
+            <GenericDropDown dropDownMenuClass={style.alignLeft} dropDown={<UserDropDownTitle/>} dropDownMenu={<UserDropDownMenu/>} type="addNotes"/>
     )
 }
