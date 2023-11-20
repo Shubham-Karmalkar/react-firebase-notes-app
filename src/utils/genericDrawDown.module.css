@@ -5,14 +5,21 @@
 .user_icon {
     max-width: 220px;
     border-radius: 3px;
+    position: relative;
     color: var(--text-bold);
     background-color: transparent;
 }
 .user_name_pic {
     display: flex;
-    position: relative;
+    /* position: relative; */
     align-items: center;
     justify-content: space-around;
+}
+.user_name_pic ~ div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
 }
 
 .user_icon input:checked+label,
@@ -42,7 +49,7 @@
     background-color: var(--secondary);
 }
 
-.user_icon input:checked+label .dropdown{
+.user_icon > input:checked+label~.dropdown{
     opacity: 1;
     transform: translateY(0px);
     pointer-events: auto;

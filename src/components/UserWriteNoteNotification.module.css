@@ -15,6 +15,6 @@
 
 @media screen and (width < 990px) {
     .notification {
-        display: none;
+        display: none !important;
     }
 }
