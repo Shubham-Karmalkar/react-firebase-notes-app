@@ -11,7 +11,7 @@ const GoogleTemplate = ({text, onClick}:{text: string, onClick: any}) => {
         <div className={styles.google_icon_wrapper}>
           <img
             className={styles.google_icon}
-            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+            src="https://img.icons8.com/color/48/google-logo.png"
           />
         </div>
         <p className={styles.btn_text}>
