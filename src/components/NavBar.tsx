@@ -12,7 +12,6 @@ const LoginBtns =() => {
   return (
     <div className={styles.signLog}>
         <Link to="/login" className={styles.signBtn}>Log in</Link>
-        {/* <Link to="/signUp" className={styles.signBtn}>Sign up</Link> */}
       </div>
   )
 }
