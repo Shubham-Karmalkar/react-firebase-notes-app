@@ -59,6 +59,15 @@
     max-width: 400px;
 }
 
+.signUp {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.signUp > a {
+    color: black;
+}
+
 @media screen and (max-width: 500px) {
     .page_title {
         font-size: 25px;

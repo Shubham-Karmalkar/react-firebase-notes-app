@@ -44,3 +44,13 @@ export const GenericDropDown = ({dropDown, dropDownMenu,type, dropDownMenuClass}
       </div>
     );
 }
+
+export const createGenericDropDown = (
+  type: string,
+  dropDown?: JSX.Element,
+  dropDownMenu?: JSX.Element,
+  dropDownMenuClass?: any
+) => {
+
+  <GenericDropDown type={type} dropDown={dropDown} dropDownMenu={dropDownMenu} dropDownMenuClass={dropDownMenuClass} />;
+};

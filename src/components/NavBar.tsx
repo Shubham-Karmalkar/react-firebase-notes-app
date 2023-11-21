@@ -22,9 +22,18 @@ export const NavBar = ({className}:{className?:any}) => {
   return (
     <div className={`${styles.topnav} ${className}`}>
       <div className={styles.leftSide}>
-        {user ? <GenericDropDown dropDownMenuClass={styles.sidebar} dropDown={<HiMiniBars3 className={styles.moreBtn} />} dropDownMenu={<SideBar/>} type={styles["sidebarDropdown"]} /> : ""}
+        {user ? 
+          <GenericDropDown 
+            dropDownMenuClass={styles.sidebar} 
+            dropDown={<HiMiniBars3 className={styles.moreBtn} />} 
+            dropDownMenu={<SideBar/>} 
+            type={styles["sidebarDropdown"]} 
+          /> 
+          : 
+          ""
+        }
         <Link to="/">
-          <img src={brand_logo} className={styles.brand_logo} />
+          <img src={brand_logo} className={styles.brand_logo} style={user? {}: {display:"block"}} />
         </Link>
       </div>
     {user ? <UserNotificationIcons className={styles.notification}/>: <LoginBtns/>}

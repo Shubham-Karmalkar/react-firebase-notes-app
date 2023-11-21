@@ -3,6 +3,7 @@ import brand_logo from '../resource/logo.png';
 import { useState } from "react";
 import { LogInWithGoogle, LogInWithCredentials } from "../components/authorization";
 import { UserCredential } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 
 const PageTitle = () => {
@@ -55,6 +56,7 @@ export const Login = () => {
         <PageTitle/>
         <UserCreds email={email} password={password} onChange={setData}/>
         <LoginOptions email={email} password={password} callback={loginStatusChange}/>
+        <div className={styles.signUp}>Don't have Account ? <Link to='/signUp'>SignUp</Link></div>
       </div>
     </div>
   );
