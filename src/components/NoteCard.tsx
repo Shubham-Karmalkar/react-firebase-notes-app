@@ -42,12 +42,24 @@ export const NoteCard = ({note, onDelete, color="red"}:{note:SimpleNote, onDelet
         }
     }
 
+    const scrollToSection = () => {
+        setTimeout(() => {
+            colorRef.current?.scrollIntoView({behavior:'smooth'});
+        }, 1000);
+    }
+
     const setNoteTobeUpdated = () => {
         setUpdateNote(note);
     }
 
     const onCancle = () => {
         setIsView(false);
+        scrollToSection()
+    }
+
+    const onView = async () => {
+        setIsView(true)
+        scrollToSection();
     }
 
     const deleteNote = () => {
@@ -87,7 +99,7 @@ export const NoteCard = ({note, onDelete, color="red"}:{note:SimpleNote, onDelet
             <GenericDropDown
              dropDownMenuClass={style.dropDown} 
              dropDown={moreIcon} 
-             dropDownMenu={<MoreOptions onView={() => setIsView(true)} onDelete={deleteNote} setUpdateNote={setNoteTobeUpdated}/>} 
+             dropDownMenu={<MoreOptions onView={onView} onDelete={deleteNote} setUpdateNote={setNoteTobeUpdated}/>} 
              type={note.id}/>
             <div className={`${style.quillContainer}`} {...textColorClass}>
                 <ViewOnlyEditor content={note.data}/>
