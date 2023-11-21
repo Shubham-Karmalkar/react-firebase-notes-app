@@ -1,5 +1,5 @@
 import style from './NoteCard.module.css';
-import { SimpleNote } from '../model/notes';
+import { SimpleNote, SimpleNoteContext } from '../model/notes';
 import { TfiMoreAlt } from "react-icons/tfi";
 import {LiaEye} from 'react-icons/lia';
 import { SlPencil } from "react-icons/sl";
@@ -10,23 +10,26 @@ import { ViewOnlyEditor } from './ViewOnlyEditor';
 import { FiUsers } from "react-icons/fi";
 import { LuUser } from "react-icons/lu";
 import { BiCalendar } from "react-icons/bi";
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { RxCross1 } from "react-icons/rx";
 
 
-const MoreOptions = () => {
+const MoreOptions = ({onDelete, setUpdateNote, onView}:{onDelete:any, setUpdateNote:any, onView:any}) => {
     return (
         <>
-            <Link to="#" className={style.links}><LiaEye/><span>View</span></Link>
-            <Link to="#" className={style.links}><SlPencil/><span>Edit</span></Link>
-            <Link to="#" className={style.links}><RiDeleteBin5Line/><span>Delete</span></Link>
+            <Link to="#" className={style.links} onClick={onView}><LiaEye/><span>View</span></Link>
+            <Link to="#" className={style.links} onClick={setUpdateNote}><SlPencil/><span>Edit</span></Link>
+            <Link to="#" className={style.links} onClick={onDelete}><RiDeleteBin5Line/><span>Delete</span></Link>
         </>
     )
 }
 
 
-export const NoteCard = ({note, color="red"}:{note:SimpleNote, color?: string}) => {
+export const NoteCard = ({note, onDelete, color="red"}:{note:SimpleNote, onDelete:any, color?: string}) => {
     const colorRef = useRef<HTMLDivElement>(null);
     const [currentColor, setCurrentColor] = useState(color);
+    const [updateNote, setUpdateNote] = useContext(SimpleNoteContext);
+    const [isView, setIsView] = useState(false);
     
     const colorClass = {
         style: {
@@ -37,6 +40,18 @@ export const NoteCard = ({note, color="red"}:{note:SimpleNote, color?: string}) 
         style: {
             color: color === currentColor ? "" : currentColor
         }
+    }
+
+    const setNoteTobeUpdated = () => {
+        setUpdateNote(note);
+    }
+
+    const onCancle = () => {
+        setIsView(false);
+    }
+
+    const deleteNote = () => {
+        onDelete(note.id);
     }
 
     useEffect(() => {
@@ -65,10 +80,16 @@ export const NoteCard = ({note, color="red"}:{note:SimpleNote, color?: string}) 
    const userText = note?.sharedUsers?.length ? `${note.sharedUsers.length} Share` : "Only You" ;
    const localDate = (note?.updatedAt ? new Date(note.updatedAt) : new Date()).toLocaleDateString();
 
+   const moreIcon = isView ? <RxCross1 onClick={onCancle} {...textColorClass}/> : <TfiMoreAlt {...textColorClass} />;
+
    return (
-        <div className={style.noteCard} style={{borderBottom:`5px solid ${color}`}} ref={colorRef}>
-            <GenericDropDown dropDownMenuClass={style.dropDown} dropDown={<TfiMoreAlt {...textColorClass} />} dropDownMenu={<MoreOptions/>} type={note.id}/>
-            <div className={style.quillContainer} {...textColorClass}>
+        <div className={`${style.noteCard} ${isView ? style.bigView: ""}`} style={{borderBottom:`5px solid ${color}`}} ref={colorRef}>
+            <GenericDropDown
+             dropDownMenuClass={style.dropDown} 
+             dropDown={moreIcon} 
+             dropDownMenu={<MoreOptions onView={() => setIsView(true)} onDelete={deleteNote} setUpdateNote={setNoteTobeUpdated}/>} 
+             type={note.id}/>
+            <div className={`${style.quillContainer}`} {...textColorClass}>
                 <ViewOnlyEditor content={note.data}/>
             </div>
             <div className={style.lowerCard}>

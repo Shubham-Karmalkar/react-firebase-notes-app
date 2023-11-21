@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
 import { ActiveEffectBtn } from '../utils/Buttons';
 import style from './UserNotes.module.css';
-import { SimpleNote, NoteTypes } from '../model/notes';
+import { SimpleNote, NoteTypes, SimpleNotesList, SimpleNoteListContext } from '../model/notes';
 import { NoteCard } from './NoteCard';
 import { UserContext } from '../hooks/useAuth';
 import noDataImg from '../resource/no_data.jpg';
+import { SetState } from '../utils';
 
 
 const ColorArr = [
@@ -49,19 +50,24 @@ const NotesNavBar = ({currentPgeId, setCurrentPage}: {currentPgeId:NoteTypes, se
     )
 }
 
-export const UserNotes = () => {
+export const UserNotes = ({setUpdateNote}:{ setUpdateNote?: SetState<SimpleNote>}) => {
     const [currentPage, setCurrentPage] = useState<NoteTypes>("all");
-    const [notes, setNotes] = useState(new SimpleNote());
+    const [notes, setNotes] = useContext(SimpleNoteListContext);
     const user = useContext(UserContext);
+
+    const notesUpdater = () => {
+        let newNoteInstance = new SimpleNotesList();
+        newNoteInstance._all = notes._all;
+        setNotes(newNoteInstance);
+    }
+
+    const deleteNote = (id: string) => {
+        console.log("delete id: ", id);
+        notes.deleteNoteById(id).then(notesUpdater);
+    }
     
     useEffect(() => {
-        notes.getAllUserNotes(user.email).then(() => {
-            let objNotes = notes.asObj();
-            let newNoteInstance = new SimpleNote();
-            newNoteInstance.createNoteByObj(objNotes);
-            newNoteInstance._all = notes._all;
-            setNotes(newNoteInstance);
-        });
+        notes.getAllUserNotes(user.email).then(notesUpdater);
     }, []);
 
 
@@ -69,7 +75,7 @@ export const UserNotes = () => {
 
     const noteCards = !(filteredNotes && filteredNotes.length)  ? (<div className={style.emptyNotes}><img src={noDataImg} alt='no data present'/></div>) : filteredNotes.map((note,index) => {
         const colorIndex = index ? index % ColorArr.length : index; 
-        return <NoteCard note={note} color={ColorArr[colorIndex]}/>;
+        return <NoteCard note={note} key={note.id} color={ColorArr[colorIndex]} onDelete={deleteNote}/>;
     })
 
     return (

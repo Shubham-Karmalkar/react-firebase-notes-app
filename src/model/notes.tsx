@@ -1,3 +1,4 @@
+import { createContext } from "react";
 import {
   db,
   doc,
@@ -10,9 +11,17 @@ import {
   DocumentReference,
   query,
   where,
+  deleteDoc,
 } from "../config/firebase";
-import { ClassUtils } from "../utils";
+import { ClassUtils, SetState } from "../utils";
 import { v4 as uuidv4 } from "uuid";
+
+export const SimpleNoteListContext = createContext<
+  [SimpleNotesList, SetState<SimpleNotesList>]
+>([null, null] as [any, any] as [SimpleNotesList, SetState<SimpleNotesList>]);
+export const SimpleNoteContext = createContext<
+  [SimpleNote, SetState<SimpleNote>]
+>([null, null] as [any, any] as [SimpleNote, SetState<SimpleNote>]);
 
 type DbNote = ClassUtils.PropsTypes<Note>;
 
@@ -25,7 +34,7 @@ abstract class Base {
     const obj: any = {};
     Object.keys(this).forEach((key) => {
       if (typeof this[key] === "function") return;
-      if(key.startsWith("_")) return;
+      if (key.startsWith("_")) return;
       obj[key] = this[key];
     });
     return obj;
@@ -70,12 +79,52 @@ abstract class Note extends Base {
   abstract save(): Promise<any>;
 }
 
-export class SimpleNote extends Note {
-  _sharedNotes?: SimpleNote[];
-  _pinNotes?: SimpleNote[];
-  _all?: SimpleNote[];
-  _favouriteNotes?: SimpleNote[];
+abstract class IRepository<T extends Note> {
+  _sharedNotes: T[] = [];
+  _pinNotes: T[] = [];
+  _all: T[] = [];
+  _favouriteNotes: T[] = [];
 
+  abstract getAllUserNotes(userId: string): Promise<T[]>;
+
+  protected getDocRef(): CollectionReference;
+  protected getDocRef(id: string): DocumentReference;
+  protected getDocRef(id?: string) {
+    if (id) {
+      return doc(db, "notes", id);
+    }
+    return collection(db, "notes");
+  }
+
+  filterNote(type: NoteTypes) {
+    if (!this._all?.length) throw "No Card to Filter";
+    switch (type) {
+      case "shared":
+        if (this._sharedNotes && this._sharedNotes.length > 0)
+          return this._sharedNotes;
+        this._sharedNotes = this._all.filter(
+          (note) => note.sharedUsers.length > 0
+        );
+        return this._sharedNotes;
+      case "favourite":
+        if (this._favouriteNotes && this._favouriteNotes.length > 0)
+          return this._favouriteNotes;
+        this._favouriteNotes = this._all.filter((note) => note.isFavourite);
+        return this._favouriteNotes;
+      case "pinned":
+        if (this._pinNotes && this._pinNotes.length > 0) return this._pinNotes;
+        this._pinNotes = this._all.filter((note) => note.isPinned);
+        return this._pinNotes;
+      case "all":
+        return this._all;
+      default:
+        let data: never = type;
+        return this._all;
+    }
+  }
+}
+
+export class SimpleNote extends Note {
   createNoteByObj(obj: DbNote) {
     for (let key of Object.keys(this)) {
       if (key in obj) {
@@ -116,7 +165,18 @@ export class SimpleNote extends Note {
     return this;
   }
 
-  async getAllUserNotes(userId: string) {
+  async delete() {
+    let docRef = this.getDocRef(this.id);
+    await deleteDoc(docRef);
+  }
+}
+
+export class SimpleNotesList extends IRepository<SimpleNote> {
+  constructor() {
+    super();
+  }
+
+  async getAllUserNotes(userId: string): Promise<SimpleNote[]> {
     if (this._all?.length) return this._all;
     const docRef = this.getDocRef();
     const q = query(docRef, where("ownerId", "==", userId));
@@ -127,62 +187,23 @@ export class SimpleNote extends Note {
     return this._all;
   }
 
-  filterNote(type: NoteTypes) {
-    if (!this._all?.length) throw "No Card to Filter";
-    switch (type) {
-      case "shared":
-        if(this._sharedNotes && this._sharedNotes.length > 0) return this._sharedNotes;
-        this._sharedNotes = this._all.filter(
-          (note) => note.sharedUsers.length > 0
-        );
-        return this._sharedNotes;
-      case "favourite":
-        if(this._favouriteNotes && this._favouriteNotes.length > 0) return this._favouriteNotes;
-        this._favouriteNotes = this._all.filter((note) => note.isFavourite);
-        return this._favouriteNotes;
-      case "pinned":
-        if(this._pinNotes && this._pinNotes.length > 0) return this._pinNotes;
-        this._pinNotes = this._all.filter((note) => note.isPinned);
-        return this._pinNotes;
-      case "all":
-        return this._all;
-      default:
-        let data: never = type;
-        return this._all;
-    }
+  async deleteNoteById(id: string) {
+    let instanceToBedeleted: SimpleNote | null = null;
+
+    if (this._all.length < 1) throw Error("no data present to be deleted");
+
+    let filteredNotes = this._all.filter((note) => {
+      if (note.id !== id) return true;
+      console.log("deleting note: ", id);
+      instanceToBedeleted = note;
+      return false;
+    });
+
+    if (!instanceToBedeleted) return;
+
+    const res = await (instanceToBedeleted as SimpleNote).delete();
+    console.log("delete res: ", res);
+
+    this._all = filteredNotes;
   }
-
-  async getSharedNotes(userId?: string): Promise<SimpleNote[]> {
-    if (this._sharedNotes?.length) return this._sharedNotes;
-    if (this._all?.length) return this.filterNote("shared");
-
-    if (!userId) throw Error("No Note Exists for UserId undefined");
-
-    this._all = await this.getAllUserNotes(userId);
-
-    return await this.getSharedNotes();
-  }
-
-  async getPinnedNotes(userId?: string): Promise<SimpleNote[]> {
-    if (this._pinNotes?.length) return this._pinNotes;
-    if (this._all?.length) return this.filterNote("pinned");
-
-    if (!userId) throw Error("No Note Exists for UserId undefined");
-
-    this._all = await this.getAllUserNotes(userId);
-
-    return await this.getPinnedNotes();
-  }
-
-  async getFavouriteNotes(userId?: string): Promise<SimpleNote[]> {
-    if (this._favouriteNotes?.length) return this._favouriteNotes;
-    if (this._all?.length) return this.filterNote("favourite");
-
-    if (!userId) throw Error("No Note Exists for UserId undefined");
-
-    this._all = await this.getAllUserNotes(userId);
-
-    return await this.getFavouriteNotes();
-  }
-
 }

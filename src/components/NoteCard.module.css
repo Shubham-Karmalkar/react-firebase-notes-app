@@ -9,7 +9,7 @@
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.125);
     padding: 15px;
     color: black;
-    transition: all 200ms ease-in-out;
+    transition: all 500ms ease-in-out;
     flex-grow: 1;
     flex-basis: 30%;
 }
@@ -19,6 +19,17 @@
     height: 170px;
     overflow: hidden;
     margin-bottom: 10px;
+    transition: all 1000ms ease-in-out;
+}
+
+.bigView {
+    flex: 1 1 100%;
+    max-width: 100%;
+    order: -1;
+}
+.bigView > .quillContainer {
+    flex: 1 1 100%;
+    max-width: 100%;
 }
 
 .noteCard>div:first-child {

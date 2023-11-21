@@ -2,7 +2,7 @@ import Quill from "quill";
 import { useCallback } from "react";
 import "./viewOnlyEditor.css"
 
-export const ViewOnlyEditor = ({content}: {content:any}) => {
+export const ViewOnlyEditor = ({content, expand}: {content:any, expand?:boolean}) => {
 
     const wrapperRef = useCallback((element: HTMLDivElement) => {
         if (!element) return;
@@ -15,7 +15,7 @@ export const ViewOnlyEditor = ({content}: {content:any}) => {
         q.setContents(content);
         q.disable();
 
-    }, []);
+    }, [content]);
 
     return <div className="viewOnlyContainer" ref={wrapperRef}></div>;
 }

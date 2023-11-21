@@ -6,3 +6,4 @@ export declare namespace ClassUtils{
     type PropsTypes<T> = NonFunctionType<T>
 }
 
+export type SetState<T> = React.Dispatch<React.SetStateAction<T>>;

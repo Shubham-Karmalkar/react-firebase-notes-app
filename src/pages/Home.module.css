@@ -10,7 +10,7 @@
     height: 100%;
 }
 .main_content {
-    width: auto;
+    width: 100%;
     margin-left: 300px;
     margin-right: 20px;
     display: flex;
@@ -29,6 +29,7 @@
     }
     .main_content {
         margin: 0 20px;
+        width: auto;
     }
     .home {
         flex-direction:column;

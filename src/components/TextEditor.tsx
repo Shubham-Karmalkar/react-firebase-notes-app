@@ -16,7 +16,7 @@ const TOOLBAR_OPTIONS = [
     ["clean"]
 ]
 
-export const TextEditor = ({onClose, onSave, className}: {onClose?:any, onSave?:any, className?:any}) => {
+export const TextEditor = ({onClose, onSave, className, content}: {onClose?:any, onSave?:any, className?:any, content?:any}) => {
 
     const [quill, setQuill] = useState<Quill>();
 
@@ -28,7 +28,7 @@ export const TextEditor = ({onClose, onSave, className}: {onClose?:any, onSave?:
         const q = new Quill(editor, {theme: "snow", modules:{
             toolbar: TOOLBAR_OPTIONS
         }});
-        q.setContents(defaultEditorData.ops as any);
+        q.setContents(content || defaultEditorData.ops as any);
         setQuill(q);
     }, []);
 

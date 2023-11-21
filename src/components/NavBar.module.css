@@ -52,16 +52,20 @@
 }
 
 .notification {
-    display: none;
+    display: none !important;
 }
 
 @media screen and (width < 990px) {
     .notification {
-        display: flex;
+        display: flex !important;
     }
 }
+
 @media screen and (width < 770px) {
     .brand_logo {
         display: none;
+    }
+    .notification {
+        max-width: 150px !important;
     }
 }
