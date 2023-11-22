@@ -10,3 +10,5 @@ Its a React app having firebase as a backend and contains functionality like let
 
 **BackEnd:** Firebase
 
+
+![Logo](src/resource/site_image1.png)
