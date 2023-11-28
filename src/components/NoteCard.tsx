@@ -4,7 +4,7 @@ import { TfiMoreAlt } from "react-icons/tfi";
 import {LiaEye} from 'react-icons/lia';
 import { SlPencil } from "react-icons/sl";
 import { RiDeleteBin5Line } from "react-icons/ri";
-import { GenericDropDown } from '../utils/genericDrawDown';
+import { DropDownBtn } from '../utils';
 import { Link } from 'react-router-dom';
 import { ViewOnlyEditor } from './ViewOnlyEditor';
 import { FiUsers } from "react-icons/fi";
@@ -96,7 +96,7 @@ export const NoteCard = ({note, onDelete, color="red"}:{note:SimpleNote, onDelet
 
    return (
         <div className={`${style.noteCard} ${isView ? style.bigView: ""}`} style={{borderBottom:`5px solid ${color}`}} ref={colorRef}>
-            <GenericDropDown
+            <DropDownBtn
              dropDownMenuClass={style.dropDown} 
              dropDown={moreIcon} 
              dropDownMenu={<MoreOptions onView={onView} onDelete={deleteNote} setUpdateNote={setNoteTobeUpdated}/>} 

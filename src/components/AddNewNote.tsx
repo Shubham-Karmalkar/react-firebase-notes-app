@@ -1,6 +1,6 @@
 import style from './AddNewNote.module.css';
 import { Link } from "react-router-dom";
-import { GenericDropDown } from "../utils/genericDrawDown";
+import { DropDownBtn } from "../utils";
 import { LiaStickyNoteSolid } from "react-icons/lia";
 import { RiTodoLine } from 'react-icons/ri'
 import { CgNotes } from 'react-icons/cg';
@@ -36,6 +36,6 @@ const UserDropDownTitle = () => {
 
 export const AddNewNote = ({className}: {className?: string}) => {
     return (
-            <GenericDropDown dropDownMenuClass={style.alignLeft} dropDown={<UserDropDownTitle/>} dropDownMenu={<UserDropDownMenu/>} type="addNotes"/>
+            <DropDownBtn dropDownMenuClass={style.alignLeft} dropDown={<UserDropDownTitle/>} dropDownMenu={<UserDropDownMenu/>} type="addNotes"/>
     )
 }

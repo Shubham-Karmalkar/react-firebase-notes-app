@@ -3,7 +3,7 @@ import {UserContext} from '../hooks/useAuth'
 import style from './UserIcon.module.css';
 import { Link } from "react-router-dom";
 import { logOut } from "./authorization";
-import { GenericDropDown } from "../utils/genericDrawDown";
+import { DropDownBtn } from "../utils";
 import { User } from "../model/user";
 import {CgProfile} from 'react-icons/cg'
 import {LiaUserEditSolid} from 'react-icons/lia';
@@ -44,7 +44,7 @@ const UserProfile = ({user}: {user:User}) => {
 export const UserIcon = ({className}: {className?: string}) => {
     const user = useContext(UserContext);
     return (
-        <GenericDropDown
+        <DropDownBtn
         dropDownMenuClass={style.alignLeft}
           dropDown={<UserProfile user={user} />}
           dropDownMenu={<UserDropDownMenu />}

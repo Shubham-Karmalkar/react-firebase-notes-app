@@ -44,6 +44,7 @@
     width: auto !important;
     position: fixed !important;
     top: 0px !important;
+    height: 100vh;
     transform: translateX(-220px) !important;
     transition: all 300ms ease-in-out !important;
 }

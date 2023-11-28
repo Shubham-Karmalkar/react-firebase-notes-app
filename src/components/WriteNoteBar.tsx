@@ -2,7 +2,7 @@ import style from "./WriteNoteBar.module.css";
 import { BiPencil } from "react-icons/bi";
 import {LiaFolder} from "react-icons/lia";
 import {FiMoreVertical} from 'react-icons/fi';
-import { GenericDropDown } from "../utils/genericDrawDown";
+import { DropDownBtn } from "../utils";
 import {AiOutlineHeart, AiOutlinePushpin} from 'react-icons/ai';
 import {GoTrash} from 'react-icons/go';
 import { Link } from "react-router-dom";
@@ -27,7 +27,7 @@ const ClickedData = () => {
       </div>
       <div>
         <span>Share</span>
-        <GenericDropDown dropDownMenuClass={style.dropdownMenu} dropDown={<FiMoreVertical className={style.icon}/>} dropDownMenu={<DropDownContent/>} type="createBar"/>
+        <DropDownBtn dropDownMenuClass={style.dropdownMenu} dropDown={<FiMoreVertical className={style.icon}/>} dropDownMenu={<DropDownContent/>} type="createBar"/>
       </div>
     </div>
   );
