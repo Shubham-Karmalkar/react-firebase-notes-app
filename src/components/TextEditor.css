@@ -33,13 +33,13 @@
     display: flex;
 }
 
-.btns > div:first-child {
+.btns > div:not(:last-child) {
     color: black;
     border: 1px solid black;
 
 }
 
-.btns > div:nth-child(2) {
+.btns > div:last-child {
     color: var(--primary);
     background-color: black;
 }
@@ -54,7 +54,7 @@
 
 
 
-.btns > div:first-child:hover {
+.btns > div:hover:not(:last-child) {
     color: white;
     background-color: black;
 }

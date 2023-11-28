@@ -36,10 +36,15 @@ export const TextEditor = ({onClose, onSave, className, content}: {onClose?:any,
       onSave(quill?.getContents()?.ops);
     }
 
+    const clearData = () => {
+      quill?.setContents(null as any)
+    }
+
     return (
       <div className={`container ${className ? className: ""} `}>
         <div ref={wrapperRef}></div>
         <div className="btns">
+          <div onClick={clearData}>Clear</div>
           <div onClick={onClose}>Close</div>
           <div onClick={onSaveClick}>Save</div>
         </div>
