@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../hooks/useAuth";
 import { HiMiniBars3 } from "react-icons/hi2";
 import { SideBar } from "./SideBar";
-import { GenericDropDown } from "../utils/genericDrawDown";
+import { DropDownBtn } from "../utils";
 import { UserNotificationIcons } from "./UserNotificationIcons";
 
 const LoginBtns =() => {
@@ -22,7 +22,7 @@ export const NavBar = ({className}:{className?:any}) => {
     <div className={`${styles.topnav} ${className}`}>
       <div className={styles.leftSide}>
         {user ? 
-          <GenericDropDown 
+          <DropDownBtn 
             dropDownMenuClass={styles.sidebar} 
             dropDown={<HiMiniBars3 className={styles.moreBtn} />} 
             dropDownMenu={<SideBar/>} 
@@ -32,7 +32,7 @@ export const NavBar = ({className}:{className?:any}) => {
           ""
         }
         <Link to="/">
-          <img src={brand_logo} className={styles.brand_logo} style={user? {}: {display:"block"}} />
+          <img src={brand_logo} alt="brand logo" className={styles.brand_logo} style={user? {}: {display:"block"}} />
         </Link>
       </div>
     {user ? <UserNotificationIcons className={styles.notification}/>: <LoginBtns/>}

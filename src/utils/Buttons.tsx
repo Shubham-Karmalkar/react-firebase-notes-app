@@ -1,3 +1,5 @@
+import { GenericDropDown } from "./genericDrawDown";
+
 export const ActiveEffectBtn = ({
   children,
   pageId,
@@ -22,3 +24,5 @@ export const ActiveEffectBtn = ({
     </div>
   );
 };
+
+export const DropDownBtn =  GenericDropDown;
