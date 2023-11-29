@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { NavBar } from "../../components/NavBar";
-import { SideBar } from "../../components/SideBar";
-import { UserNotes } from "../../components/UserNotes";
-import { UserWriteNoteNotification } from "../../components/UserWriteNoteNotification";
+import { SideBar } from "../../components/sidebar";
+import { UserNotes } from "./components/notes/UserNotes";
+import { UserWriteNoteNotification } from "./components/home-subnav/UserWriteNoteNotification";
 import style from "./Home.module.css";
 import { SimpleNote, SimpleNotesList, SimpleNoteListContext, SimpleNoteContext } from "../../model/notes";
 

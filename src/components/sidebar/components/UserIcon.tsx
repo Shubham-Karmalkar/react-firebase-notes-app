@@ -1,10 +1,10 @@
 import { useContext } from "react"
-import {UserContext} from '../hooks/useAuth'
+import {UserContext} from '../../../hooks/useAuth'
 import style from './UserIcon.module.css';
 import { Link } from "react-router-dom";
-import { logOut } from "./authorization";
-import { DropDownBtn } from "../utils";
-import { User } from "../model/user";
+import { logOut } from "../../authorization";
+import { DropDownBtn } from "../../../utils";
+import { User } from "../../../model/user";
 import {CgProfile} from 'react-icons/cg'
 import {LiaUserEditSolid} from 'react-icons/lia';
 import {GrUserSettings} from 'react-icons/gr';

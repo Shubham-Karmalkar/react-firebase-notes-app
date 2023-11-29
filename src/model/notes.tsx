@@ -2,9 +2,7 @@ import { createContext } from "react";
 import {
   db,
   doc,
-  getDoc,
   setDoc,
-  addDoc,
   getDocs,
   collection,
   CollectionReference,
@@ -97,7 +95,7 @@ abstract class IRepository<T extends Note> {
   }
 
   filterNote(type: NoteTypes) {
-    if (!this._all?.length) throw "No Card to Filter";
+    if (!this._all?.length) throw new Error("No Card to Filter");
     switch (type) {
       case "shared":
         if (this._sharedNotes && this._sharedNotes.length > 0)

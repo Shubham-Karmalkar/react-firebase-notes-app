@@ -1,14 +1,14 @@
 import style from "./SideBar.module.css";
-import { UserIcon } from "./UserIcon";
-import { AddNewNote } from "./AddNewNote";
+import { UserIcon } from "./components/UserIcon";
+import { AddNewNote } from "./components/AddNewNote";
 import { Link } from "react-router-dom";
 import { GiNotebook } from "react-icons/gi";
 import { SlNotebook } from "react-icons/sl";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { FiTag } from "react-icons/fi";
 import { ImBin2 } from "react-icons/im";
-import logo from "../resource/logo.png";
-import goUpgradeLogo from '../resource/go_upgrade.png';
+import logo from "../../resource/logo.png";
+import goUpgradeLogo from '../../resource/go_upgrade.png';
 
 export const SideBar = ({className}: {className?:any}) => {
 

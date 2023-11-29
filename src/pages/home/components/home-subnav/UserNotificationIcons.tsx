@@ -1,5 +1,5 @@
 import style from "./UserNotificationIcons.module.css";
-import { DropDownBtn } from "../utils"
+import { DropDownBtn } from "../../../../utils"
 import {FiMail} from "react-icons/fi";
 import {IoNotificationsOutline} from "react-icons/io5";
 import { Link } from "react-router-dom";

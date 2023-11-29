@@ -79,7 +79,7 @@ export class User {
   async save() {
     const userObj = this.asObj();
     if (!userObj.email || !userObj.name || !userObj.uid) {
-      throw "Incomplete User Data";
+      throw new Error("Incomplete User Data");
     }
 
     let docRef = User.getDocRef(userObj.email);
@@ -109,7 +109,7 @@ export class User {
       updatedAt,
     } = userObj;
     if (!email || !name || !uid) {
-      throw "Incomplete User Data";
+      throw new Error("Incomplete User Data");
     }
     return new User(email, name, imageUrl || "")
       .setUid(uid)
