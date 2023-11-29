@@ -34,6 +34,7 @@
     "lint:fix": "eslint  --fix src/**/*.{ts,json,tsx}",
     "format:lint": "npm run format && npm run lint",
     "format:lint:fix": "npm run format && npm run lint:fix",
+    "git": "git commit -m",
     "format": "prettier src/**/*.{ts,json,tsx} --write --config ./.prettierrc",
     "build:prod:deploy": "git switch prod && git pull origin && env-cmd -f .env npm run build && firebase deploy -P notes-app-325cd"
   },
