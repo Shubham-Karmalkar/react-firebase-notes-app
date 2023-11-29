@@ -1,9 +1,9 @@
-import { NavBar } from '../../components/NavBar';
+import { NavBar } from "../../components/NavBar";
 
 export const LandingPage = () => {
-    return (
-        <div>
-            <NavBar/>
-        </div>
-    );
-}
+  return (
+    <div>
+      <NavBar />
+    </div>
+  );
+};

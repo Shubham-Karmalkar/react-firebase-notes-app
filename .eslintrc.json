@@ -20,6 +20,9 @@
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
-        "react/jsx-uses-react": "off"
+        "react/jsx-uses-react": "off",
+        "quotes": [2, "double"],
+        "jsx-quotes": [2, "prefer-double"],
+        "max-len": [2, 120]
     }
 }

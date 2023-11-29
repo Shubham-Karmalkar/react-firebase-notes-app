@@ -1,4 +1,4 @@
-import { auth} from "./config/firebase";
+import { auth } from "./config/firebase";
 import { LandingPage } from "./pages/landing";
 import "./App.css";
 import { Login } from "./pages/auth";

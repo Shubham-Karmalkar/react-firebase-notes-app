@@ -1,25 +1,16 @@
 import { createContext } from "react";
-import {
-  db,
-  doc,
-  setDoc,
-  getDocs,
-  collection,
-  CollectionReference,
-  DocumentReference,
-  query,
-  where,
-  deleteDoc,
-} from "../config/firebase";
+import { db, doc, setDoc, getDocs, collection, CollectionReference, DocumentReference, query, where, deleteDoc } from "../config/firebase";
 import { ClassUtils, SetState } from "../utils";
 import { v4 as uuidv4 } from "uuid";
 
-export const SimpleNoteListContext = createContext<
-  [SimpleNotesList, SetState<SimpleNotesList>]
->([null, null] as [any, any] as [SimpleNotesList, SetState<SimpleNotesList>]);
-export const SimpleNoteContext = createContext<
-  [SimpleNote, SetState<SimpleNote>]
->([null, null] as [any, any] as [SimpleNote, SetState<SimpleNote>]);
+export const SimpleNoteListContext = createContext<[SimpleNotesList, SetState<SimpleNotesList>]>([null, null] as [any, any] as [
+  SimpleNotesList,
+  SetState<SimpleNotesList>
+]);
+export const SimpleNoteContext = createContext<[SimpleNote, SetState<SimpleNote>]>([null, null] as [any, any] as [
+  SimpleNote,
+  SetState<SimpleNote>
+]);
 
 type DbNote = ClassUtils.PropsTypes<Note>;
 
@@ -98,15 +89,11 @@ abstract class IRepository<T extends Note> {
     if (!this._all?.length) throw new Error("No Card to Filter");
     switch (type) {
       case "shared":
-        if (this._sharedNotes && this._sharedNotes.length > 0)
-          return this._sharedNotes;
-        this._sharedNotes = this._all.filter(
-          (note) => note.sharedUsers.length > 0
-        );
+        if (this._sharedNotes && this._sharedNotes.length > 0) return this._sharedNotes;
+        this._sharedNotes = this._all.filter((note) => note.sharedUsers.length > 0);
         return this._sharedNotes;
       case "favourite":
-        if (this._favouriteNotes && this._favouriteNotes.length > 0)
-          return this._favouriteNotes;
+        if (this._favouriteNotes && this._favouriteNotes.length > 0) return this._favouriteNotes;
         this._favouriteNotes = this._all.filter((note) => note.isFavourite);
         return this._favouriteNotes;
       case "pinned":
@@ -179,9 +166,7 @@ export class SimpleNotesList extends IRepository<SimpleNote> {
     const docRef = this.getDocRef();
     const q = query(docRef, where("ownerId", "==", userId));
     const snapShots = await getDocs(q);
-    this._all = snapShots.docs.map((result) =>
-      new SimpleNote().createNoteByObj(result.data() as DbNote)
-    );
+    this._all = snapShots.docs.map((result) => new SimpleNote().createNoteByObj(result.data() as DbNote));
     return this._all;
   }
 

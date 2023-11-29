@@ -1,8 +1,3 @@
-
-
-
 export const CustomAlert = () => {
-    return (
-        <></>
-    )
-}
+  return <></>;
+};

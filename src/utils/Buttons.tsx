@@ -6,7 +6,7 @@ export const ActiveEffectBtn = ({
   currentPgeId,
   className,
   activeClass,
-  onClick,
+  onClick
 }: {
   children?: any;
   pageId?: string;
@@ -16,13 +16,10 @@ export const ActiveEffectBtn = ({
   onClick?: any;
 }) => {
   return (
-    <div
-      onClick={() => onClick(pageId)}
-      className={`${className} ${pageId === currentPgeId ? activeClass : ""}`}
-    >
+    <div onClick={() => onClick(pageId)} className={`${className} ${pageId === currentPgeId ? activeClass : ""}`}>
       {children}
     </div>
   );
 };
 
-export const DropDownBtn =  GenericDropDown;
+export const DropDownBtn = GenericDropDown;

@@ -1,16 +1,16 @@
-import {User as AuthUser} from 'firebase/auth';
-import { db, doc, getDoc, setDoc } from '../config/firebase';
+import { User as AuthUser } from "firebase/auth";
+import { db, doc, getDoc, setDoc } from "../config/firebase";
 
 export type DbUser = {
-  email: string,
-  name: string, 
-  uid: string,
+  email: string;
+  name: string;
+  uid: string;
   createdAt?: number;
   updatedAt?: number;
-  providerId: string,
-  imageUrl?: string,
-  phoneNumber?:string,
-}
+  providerId: string;
+  imageUrl?: string;
+  phoneNumber?: string;
+};
 export class User {
   uid: string = "";
   providerId: string = "";
@@ -50,16 +50,7 @@ export class User {
   }
 
   asObj(): DbUser {
-    const {
-      email,
-      name,
-      uid,
-      providerId,
-      imageUrl,
-      phoneNumber,
-      createdAt,
-      updatedAt,
-    } = this;
+    const { email, name, uid, providerId, imageUrl, phoneNumber, createdAt, updatedAt } = this;
     return {
       email,
       name,
@@ -68,7 +59,7 @@ export class User {
       imageUrl,
       phoneNumber,
       createdAt,
-      updatedAt,
+      updatedAt
     };
   }
 
@@ -98,16 +89,7 @@ export class User {
 
   static getInstanceByObj(userObj: DbUser): User {
     const fallbackDate = new Date().getTime();
-    const {
-      email,
-      name,
-      uid,
-      providerId,
-      imageUrl,
-      phoneNumber,
-      createdAt,
-      updatedAt,
-    } = userObj;
+    const { email, name, uid, providerId, imageUrl, phoneNumber, createdAt, updatedAt } = userObj;
     if (!email || !name || !uid) {
       throw new Error("Incomplete User Data");
     }
@@ -119,15 +101,14 @@ export class User {
   }
 
   static getInstanceByAuth(authUser: AuthUser): User {
-    const { displayName, email, photoURL, uid, providerData, phoneNumber } =
-      authUser;
+    const { displayName, email, photoURL, uid, providerData, phoneNumber } = authUser;
     const obj = {
       name: displayName,
       imageUrl: photoURL,
       email,
       uid,
       providerData,
-      phoneNumber,
+      phoneNumber
     };
     return this.getInstanceByObj(obj as any as DbUser);
   }
@@ -139,4 +120,3 @@ export class User {
     return this.getInstanceByObj(docSnap.data() as User);
   }
 }
-

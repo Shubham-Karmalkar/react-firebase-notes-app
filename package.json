@@ -32,7 +32,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{ts,json,tsx}",
     "lint:fix": "eslint  --fix src/**/*.{ts,json,tsx}",
-    "format": "prettier src/**/*.{ts,json,tsx} --write. --config ./.prettierrc",
+    "format": "prettier src/**/*.{ts,json,tsx} --write --config ./.prettierrc",
     "build:prod:deploy": "git switch prod && git pull origin && env-cmd -f .env npm run build && firebase deploy -P notes-app-325cd"
   },
   "eslintConfig": {

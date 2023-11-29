@@ -8,34 +8,36 @@ import { SideBar } from "./sidebar";
 import { DropDownBtn } from "../utils";
 import { UserNotificationIcons } from "../pages/home/components/home-subnav/UserNotificationIcons";
 
-const LoginBtns =() => {
+const LoginBtns = () => {
   return (
     <div className={styles.signLog}>
-        <Link to="/login" className={styles.signBtn}>Log in</Link>
-      </div>
-  )
-}
+      <Link to="/login" className={styles.signBtn}>
+        Log in
+      </Link>
+    </div>
+  );
+};
 
-export const NavBar = ({className}:{className?:any}) => {
+export const NavBar = ({ className }: { className?: any }) => {
   const user = useContext(UserContext);
   return (
     <div className={`${styles.topnav} ${className}`}>
       <div className={styles.leftSide}>
-        {user ? 
-          <DropDownBtn 
-            dropDownMenuClass={styles.sidebar} 
-            dropDown={<HiMiniBars3 className={styles.moreBtn} />} 
-            dropDownMenu={<SideBar/>} 
-            type={styles["sidebarDropdown"]} 
-          /> 
-          : 
+        {user ? (
+          <DropDownBtn
+            dropDownMenuClass={styles.sidebar}
+            dropDown={<HiMiniBars3 className={styles.moreBtn} />}
+            dropDownMenu={<SideBar />}
+            type={styles["sidebarDropdown"]}
+          />
+        ) : (
           ""
-        }
+        )}
         <Link to="/">
-          <img src={brand_logo} alt="brand logo" className={styles.brand_logo} style={user? {}: {display:"block"}} />
+          <img src={brand_logo} alt="brand logo" className={styles.brand_logo} style={user ? {} : { display: "block" }} />
         </Link>
       </div>
-    {user ? <UserNotificationIcons className={styles.notification}/>: <LoginBtns/>}
+      {user ? <UserNotificationIcons className={styles.notification} /> : <LoginBtns />}
     </div>
   );
 };

@@ -1,71 +1,71 @@
 {
-    "ops": [
-        {
-            "attributes": {
-                "header": 4
-            },
-            "insert": "\n"
-        },
-        {
-            "insert": "Birthday Bash"
-        },
-        {
-            "attributes": {
-                "header": 1
-            },
-            "insert": "\n"
-        },
-        {
-            "insert": "Hosting friend's birthday party and purchasing items.\n\nCake"
-        },
-        {
-            "attributes": {
-                "list": "bullet"
-            },
-            "insert": "\n"
-        },
-        {
-            "insert": "Balloons"
-        },
-        {
-            "attributes": {
-                "list": "bullet"
-            },
-            "insert": "\n"
-        },
-        {
-            "insert": "Cold Drinks"
-        },
-        {
-            "attributes": {
-                "list": "bullet"
-            },
-            "insert": "\n"
-        },
-        {
-            "insert": "\n"
-        },
-        {
-            "attributes": {
-                "alt": "image"
-            },
-            "insert": {
-                "image": "https://templates.iqonic.design/note-plus/html/assets/images/event-note/01.png"
-            }
-        },
-        {
-            "insert": " "
-        },
-        {
-            "attributes": {
-                "alt": "image"
-            },
-            "insert": {
-                "image": "https://templates.iqonic.design/note-plus/html/assets/images/event-note/02.png"
-            }
-        },
-        {
-            "insert": "\n"
-        }
-    ]
+  "ops": [
+    {
+      "attributes": {
+        "header": 4
+      },
+      "insert": "\n"
+    },
+    {
+      "insert": "Birthday Bash"
+    },
+    {
+      "attributes": {
+        "header": 1
+      },
+      "insert": "\n"
+    },
+    {
+      "insert": "Hosting friend's birthday party and purchasing items.\n\nCake"
+    },
+    {
+      "attributes": {
+        "list": "bullet"
+      },
+      "insert": "\n"
+    },
+    {
+      "insert": "Balloons"
+    },
+    {
+      "attributes": {
+        "list": "bullet"
+      },
+      "insert": "\n"
+    },
+    {
+      "insert": "Cold Drinks"
+    },
+    {
+      "attributes": {
+        "list": "bullet"
+      },
+      "insert": "\n"
+    },
+    {
+      "insert": "\n"
+    },
+    {
+      "attributes": {
+        "alt": "image"
+      },
+      "insert": {
+        "image": "https://templates.iqonic.design/note-plus/html/assets/images/event-note/01.png"
+      }
+    },
+    {
+      "insert": " "
+    },
+    {
+      "attributes": {
+        "alt": "image"
+      },
+      "insert": {
+        "image": "https://templates.iqonic.design/note-plus/html/assets/images/event-note/02.png"
+      }
+    },
+    {
+      "insert": "\n"
+    }
+  ]
 }
