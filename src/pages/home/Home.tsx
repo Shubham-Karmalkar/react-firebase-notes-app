@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { NavBar } from "../components/NavBar";
-import { SideBar } from "../components/SideBar";
-import { UserNotes } from "../components/UserNotes";
-import { UserWriteNoteNotification } from "../components/UserWriteNoteNotification";
+import { NavBar } from "../../components/NavBar";
+import { SideBar } from "../../components/SideBar";
+import { UserNotes } from "../../components/UserNotes";
+import { UserWriteNoteNotification } from "../../components/UserWriteNoteNotification";
 import style from "./Home.module.css";
-import { SimpleNote, SimpleNotesList, SimpleNoteListContext, SimpleNoteContext } from "../model/notes";
+import { SimpleNote, SimpleNotesList, SimpleNoteListContext, SimpleNoteContext } from "../../model/notes";
 
 export const Home = () => {
   const [notes, setNotes] = useState(new SimpleNotesList());

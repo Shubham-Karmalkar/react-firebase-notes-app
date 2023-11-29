@@ -1,7 +1,7 @@
 import styles from "./Login.module.css";
-import brand_logo from '../resource/logo.png';
+import brand_logo from '../../../resource/logo.png';
 import { useState } from "react";
-import { LogInWithGoogle, LogInWithCredentials } from "../components/authorization";
+import { LogInWithGoogle, LogInWithCredentials } from "../../../components/authorization";
 import { UserCredential } from "firebase/auth";
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const PageTitle = () => {
   return (
     <div className={styles.page_head}>
-      <img src={brand_logo} className={styles.brand_logo}/>
+      <img src={brand_logo} alt="brand logo" className={styles.brand_logo}/>
       <div className={styles.page_title}>Log in</div>
     </div>
   );
