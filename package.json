@@ -30,6 +30,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.{ts,json,tsx}",
+    "lint:fix": "eslint  --fix src/**/*.{ts,json,tsx}",
+    "format": "prettier src/**/*.{ts,json,tsx} --write. --config ./.prettierrc",
     "build:prod:deploy": "git switch prod && git pull origin && env-cmd -f .env npm run build && firebase deploy -P notes-app-325cd"
   },
   "eslintConfig": {
@@ -51,6 +54,11 @@
     ]
   },
   "devDependencies": {
-    "env-cmd": "^10.1.0"
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "env-cmd": "^10.1.0",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "3.1.0"
   }
 }

@@ -5,7 +5,7 @@ export const getUser = (key: "user" = "user") => {
   const userObjRaw = localStorage.getItem(key);
   if(!userObjRaw) return;
   const userObj = JSON.parse(userObjRaw);
-  let instance = User.getInstanceByObj(userObj);
+  const instance = User.getInstanceByObj(userObj);
   return instance;
 };
 

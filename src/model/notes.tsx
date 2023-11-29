@@ -116,7 +116,7 @@ abstract class IRepository<T extends Note> {
       case "all":
         return this._all;
       default:
-        let data: never = type;
+        const data: never = type;
         return this._all;
     }
   }
@@ -124,7 +124,7 @@ abstract class IRepository<T extends Note> {
 
 export class SimpleNote extends Note {
   createNoteByObj(obj: DbNote) {
-    for (let key of Object.keys(this)) {
+    for (const key of Object.keys(this)) {
       if (key in obj) {
         this[key] = obj[key];
       }
@@ -164,7 +164,7 @@ export class SimpleNote extends Note {
   }
 
   async delete() {
-    let docRef = this.getDocRef(this.id);
+    const docRef = this.getDocRef(this.id);
     await deleteDoc(docRef);
   }
 }
@@ -190,7 +190,7 @@ export class SimpleNotesList extends IRepository<SimpleNote> {
 
     if (this._all.length < 1) throw Error("no data present to be deleted");
 
-    let filteredNotes = this._all.filter((note) => {
+    const filteredNotes = this._all.filter((note) => {
       if (note.id !== id) return true;
       console.log("deleting note: ", id);
       instanceToBedeleted = note;

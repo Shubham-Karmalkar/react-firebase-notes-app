@@ -28,7 +28,7 @@ export const LogInWithGoogle = ({callback}:{callback:any}) => {
             const logRes = await signInWithPopup(auth, googleProvider);
             callback({status: true, repsonse: logRes});
         } catch(e: any) {
-            let message = getErrorMessage(e);
+            const message = getErrorMessage(e);
             callback({status: false, message})
         }
     }
@@ -43,7 +43,7 @@ export const SignUpWithGoogle = ({callback}:{callback:any}) => {
             const logRes = await signInWithPopup(auth, googleProvider);
             callback({status: true, repsonse: logRes});
         } catch(e: any) {
-            let message = getErrorMessage(e);
+            const message = getErrorMessage(e);
             callback({status: false, message})
         }
     }
@@ -64,7 +64,7 @@ export const LogInWithCredentials = ({email, password, callback}: {email: string
         )
         callback({status: true, response: logInRes});
       } catch (e: any) {
-        let message = getErrorMessage(e);
+        const message = getErrorMessage(e);
         callback({status: false, message});
       }
     };
@@ -85,7 +85,7 @@ export const SignUpWithCredentials = ({email, password, confPassword, callback}:
         );
         callback({ status: true, repsonse: logInRes });
       } catch (e: any) {
-        let message = getErrorMessage(e);
+        const message = getErrorMessage(e);
         callback({ status: false, message });
       }
     };

@@ -29,7 +29,7 @@ export const useAuthUser = (auth: Auth) => {
   }
 
   useEffect(() => {
-    let user = cache.getUser();
+    const user = cache.getUser();
     if(!user) return;
     setUser(user);
   },[]);

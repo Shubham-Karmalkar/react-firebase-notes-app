@@ -56,7 +56,7 @@ export const UserNotes = ({setUpdateNote}:{ setUpdateNote?: SetState<SimpleNote>
     const user = useContext(UserContext);
 
     const notesUpdater = () => {
-        let newNoteInstance = new SimpleNotesList();
+        const newNoteInstance = new SimpleNotesList();
         newNoteInstance._all = notes._all;
         setNotes(newNoteInstance);
     }
@@ -71,7 +71,7 @@ export const UserNotes = ({setUpdateNote}:{ setUpdateNote?: SetState<SimpleNote>
     }, []);
 
 
-    let filteredNotes = notes._all && notes._all.length > 0 &&  notes.filterNote(currentPage);
+    const filteredNotes = notes._all && notes._all.length > 0 &&  notes.filterNote(currentPage);
 
     const noteCards = !(filteredNotes && filteredNotes.length)  ? (<div className={style.emptyNotes}><img src={noDataImg} alt='no data present'/></div>) : filteredNotes.map((note,index) => {
         const colorIndex = index ? index % ColorArr.length : index; 

@@ -67,7 +67,7 @@ export const NoteCard = ({note, onDelete, color="red"}:{note:SimpleNote, onDelet
     }
 
     useEffect(() => {
-        let colorReference:any = colorRef.current;
+        const colorReference:any = colorRef.current;
         
         const handleEnter = () => {
             colorReference?.setAttribute("style", `background-color: ${color}; border-bottom: 5px solid ${color};`)

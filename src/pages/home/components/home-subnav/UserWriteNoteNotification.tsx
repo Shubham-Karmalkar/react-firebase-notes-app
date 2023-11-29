@@ -24,10 +24,10 @@ export const UserWriteNoteNotification = () => {
 
   const onClickSaveNote = async (noteData:object[]) => {
     if (updateNote) {
-      let newUpdate = updateNote;
+      const newUpdate = updateNote;
       newUpdate.data = [...noteData];
       await newUpdate.update()
-      let newNotesList = new SimpleNotesList();
+      const newNotesList = new SimpleNotesList();
       newNotesList._all = notesList._all.map((note:SimpleNote) => {
         if(note.id === newUpdate.id){
           note.data = [...noteData];
@@ -37,9 +37,9 @@ export const UserWriteNoteNotification = () => {
       setNotesList(newNotesList);
       onClickCloseEditor();
     } else {
-      let note = new SimpleNote(noteData, user.email);
+      const note = new SimpleNote(noteData, user.email);
       note.save();
-      let newNotesList = new SimpleNotesList();
+      const newNotesList = new SimpleNotesList();
       newNotesList._all = notesList._all.map(obj => obj);
       newNotesList._all.push(note);
       setNotesList(newNotesList);

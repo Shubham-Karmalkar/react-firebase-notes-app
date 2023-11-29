@@ -82,7 +82,7 @@ export class User {
       throw new Error("Incomplete User Data");
     }
 
-    let docRef = User.getDocRef(userObj.email);
+    const docRef = User.getDocRef(userObj.email);
 
     userObj.updatedAt = new Date().getTime();
     this.updatedAt = userObj.updatedAt;
@@ -97,7 +97,7 @@ export class User {
   }
 
   static getInstanceByObj(userObj: DbUser): User {
-    let fallbackDate = new Date().getTime();
+    const fallbackDate = new Date().getTime();
     const {
       email,
       name,
@@ -121,7 +121,7 @@ export class User {
   static getInstanceByAuth(authUser: AuthUser): User {
     const { displayName, email, photoURL, uid, providerData, phoneNumber } =
       authUser;
-    let obj = {
+    const obj = {
       name: displayName,
       imageUrl: photoURL,
       email,
@@ -133,7 +133,7 @@ export class User {
   }
 
   static async getUserById(emailId: string) {
-    let docRef = this.getDocRef(emailId);
+    const docRef = this.getDocRef(emailId);
     const docSnap = await getDoc(docRef);
     if (!docSnap.exists()) return null;
     return this.getInstanceByObj(docSnap.data() as User);
