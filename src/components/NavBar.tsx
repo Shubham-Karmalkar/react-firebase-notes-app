@@ -4,9 +4,9 @@ import brand_logo from "../resource/logo.png";
 import { useContext } from "react";
 import { UserContext } from "../hooks/useAuth";
 import { HiMiniBars3 } from "react-icons/hi2";
-import { SideBar } from "./SideBar";
+import { SideBar } from "./sidebar";
 import { DropDownBtn } from "../utils";
-import { UserNotificationIcons } from "./UserNotificationIcons";
+import { UserNotificationIcons } from "../pages/home/components/home-subnav/UserNotificationIcons";
 
 const LoginBtns =() => {
   return (

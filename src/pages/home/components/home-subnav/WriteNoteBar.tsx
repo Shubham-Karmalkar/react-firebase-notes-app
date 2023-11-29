@@ -2,7 +2,7 @@ import style from "./WriteNoteBar.module.css";
 import { BiPencil } from "react-icons/bi";
 import {LiaFolder} from "react-icons/lia";
 import {FiMoreVertical} from 'react-icons/fi';
-import { DropDownBtn } from "../utils";
+import { DropDownBtn } from "../../../../utils";
 import {AiOutlineHeart, AiOutlinePushpin} from 'react-icons/ai';
 import {GoTrash} from 'react-icons/go';
 import { Link } from "react-router-dom";

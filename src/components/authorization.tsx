@@ -2,7 +2,6 @@ import { auth, googleProvider } from "../config/firebase";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
 import styles from "./authorization.module.css"
-import { useEffect, useState } from "react";
 
 const GoogleTemplate = ({text, onClick}:{text: string, onClick: any}) => {
 
@@ -11,6 +10,7 @@ const GoogleTemplate = ({text, onClick}:{text: string, onClick: any}) => {
         <div className={styles.google_icon_wrapper}>
           <img
             className={styles.google_icon}
+            alt="google icon"
             src="https://img.icons8.com/color/48/google-logo.png"
           />
         </div>

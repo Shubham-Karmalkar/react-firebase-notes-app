@@ -1,6 +1,6 @@
 import style from './AddNewNote.module.css';
 import { Link } from "react-router-dom";
-import { DropDownBtn } from "../utils";
+import { DropDownBtn } from "../../../utils";
 import { LiaStickyNoteSolid } from "react-icons/lia";
 import { RiTodoLine } from 'react-icons/ri'
 import { CgNotes } from 'react-icons/cg';

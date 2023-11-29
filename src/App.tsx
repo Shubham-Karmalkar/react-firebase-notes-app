@@ -1,9 +1,9 @@
 import { auth} from "./config/firebase";
-import { LandingPage } from "./pages/LandingPage";
+import { LandingPage } from "./pages/landing";
 import "./App.css";
-import { Login } from "./pages/Login";
-import { SignUp } from "./pages/SIgnUp";
-import { Home } from "./pages/Home";
+import { Login } from "./pages/auth";
+import { SignUp } from "./pages/auth";
+import { Home } from "./pages/home";
 import { useAuthUser, UserContext } from "./hooks/useAuth";
 import { CustomRoutes, AuthRoute } from "./hooks/authRoute";
 

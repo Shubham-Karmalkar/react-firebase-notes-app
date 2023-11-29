@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
-import { ActiveEffectBtn } from '../utils/Buttons';
+import { ActiveEffectBtn } from '../../../../utils/Buttons';
 import style from './UserNotes.module.css';
-import { SimpleNote, NoteTypes, SimpleNotesList, SimpleNoteListContext } from '../model/notes';
+import { SimpleNote, NoteTypes, SimpleNotesList, SimpleNoteListContext } from '../../../../model/notes';
 import { NoteCard } from './NoteCard';
-import { UserContext } from '../hooks/useAuth';
-import noDataImg from '../resource/no_data.jpg';
-import { SetState } from '../utils';
+import { UserContext } from '../../../../hooks/useAuth';
+import noDataImg from '../../../../resource/no_data.jpg';
+import { SetState } from '../../../../utils';
 
 
 const ColorArr = [

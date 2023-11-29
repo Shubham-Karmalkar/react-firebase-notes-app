@@ -1,10 +1,10 @@
 import style from './UserWriteNoteNotification.module.css';
 import { UserNotificationIcons } from "./UserNotificationIcons";
 import { WriteNoteBar } from "./WriteNoteBar";
-import { TextEditor } from './TextEditor';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { SimpleNote, SimpleNoteContext, SimpleNoteListContext, SimpleNotesList } from '../model/notes';
-import { UserContext } from '../hooks/useAuth';
+import { TextEditor } from '../../../../components/editor/TextEditor';
+import { useContext, useRef, useState } from 'react';
+import { SimpleNote, SimpleNoteContext, SimpleNoteListContext, SimpleNotesList } from '../../../../model/notes';
+import { UserContext } from '../../../../hooks/useAuth';
 
 export const UserWriteNoteNotification = () => {
   const [clicked, setClicked] = useState(false);

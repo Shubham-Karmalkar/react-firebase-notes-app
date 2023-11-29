@@ -1,12 +1,12 @@
 import style from './NoteCard.module.css';
-import { SimpleNote, SimpleNoteContext } from '../model/notes';
+import { SimpleNote, SimpleNoteContext } from '../../../../model/notes';
 import { TfiMoreAlt } from "react-icons/tfi";
 import {LiaEye} from 'react-icons/lia';
 import { SlPencil } from "react-icons/sl";
 import { RiDeleteBin5Line } from "react-icons/ri";
-import { DropDownBtn } from '../utils';
+import { DropDownBtn } from '../../../../utils';
 import { Link } from 'react-router-dom';
-import { ViewOnlyEditor } from './ViewOnlyEditor';
+import { ViewOnlyEditor } from '../../../../components/editor/ViewOnlyEditor';
 import { FiUsers } from "react-icons/fi";
 import { LuUser } from "react-icons/lu";
 import { BiCalendar } from "react-icons/bi";
