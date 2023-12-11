@@ -1,8 +1,8 @@
 
-# React-Firebase Notes App
+# React-Firebase Notes App 
+![Project Status](https://img.shields.io/badge/Status-Ongoing-green)
 
 Its a React app having firebase as a backend and contains functionality like letting user create, update, delete, share notes created.
-
 
 ## Tech Stack
 
@@ -11,4 +11,11 @@ Its a React app having firebase as a backend and contains functionality like let
 **BackEnd:** Firebase
 
 
-![Logo](src/resource/site_image1.png)
+## Screenshots
+
+![App Screenshot](src/resource/site_image1.png)
+
+
+## Demo
+
+site Url : https://note-tie.web.app/
